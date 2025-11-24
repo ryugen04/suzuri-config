@@ -16,13 +16,13 @@
         default_layer {
             bindings = <
                 &mkp RCLK    &mkp LCLK
-                &mkp RCLK    &mkp MCLK
+                &mkp RCLK    &mo LAYER1
             >;
         };
 
         layer_1 {
             bindings = <
-                &mkp MB4     &mkp MB5
+                &mkp MB4     &mkp MCLK
                 &trans       &trans
             >;
         };
