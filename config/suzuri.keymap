@@ -40,8 +40,8 @@
         compatible = "zmk,input-listener";
         device = <&trackball>;
         input-processors =
-            <&zip_x_scaler 3 2>, // X軸（横方向）の移動量を1.5倍に調整（左右の移動量を増加）
-            <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>; // X軸反転
+            <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>, // Y軸反転
+            <&zip_x_scaler 3 2>; // X軸（横方向）の移動量を1.5倍に調整
 
         scroller {
             layers = <1>;
