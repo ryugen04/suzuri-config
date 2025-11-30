@@ -8,6 +8,16 @@
 #define LAYER1  1
 
 / {
+    behaviors {
+        rclk_layer: rclk_layer {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;  // 長押し判定までの時間
+            bindings = <&mo>, <&mkp>;
+        };
+    };
+
     combos {
         compatible = "zmk,combos";
         combo_layer1 {
@@ -24,7 +34,7 @@
 
         default_layer {
             bindings = <
-                &mkp RCLK    &mkp LCLK
+                &rclk_layer LAYER1 RCLK    &mkp LCLK
                 &mkp LAYER1    &mo LAYER1
             >;
         };
