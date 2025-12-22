@@ -60,8 +60,7 @@
         device = <&trackball>;
         input-processors =
             <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>, // Y軸反転
-            <&zip_x_scaler 5 10>, // X軸の移動量を0.5倍に調整
-            <&zip_y_scaler 5 10>; // Y軸の移動量を0.5倍に調整
+            <&zip_xy_scaler 2 3>; // XY軸の移動量を0.67倍に調整（元の約1.33倍）
 
         scroller {
             layers = <1>;
