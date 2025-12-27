@@ -52,6 +52,11 @@
 #include <input/processors.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
 
+// pmw3610-driverの破壊的変更に対応: compatible文字列を更新
+&trackball {
+    compatible = "pixart,pmw3610-alt";
+};
+
 / {
     trackball_listener {
         // Input Processor を使用して、トラックボールの入力を処理できます。
@@ -60,7 +65,7 @@
         device = <&trackball>;
         input-processors =
             <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>, // Y軸反転
-            <&zip_xy_scaler 2 3>; // XY軸の移動量を0.67倍に調整（元の約1.33倍）
+            <&zip_xy_scaler 7 8>; // XY軸の移動量を0.875倍に調整（元の約1.3倍）
 
         scroller {
             layers = <1>;
