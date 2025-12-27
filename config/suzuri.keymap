@@ -48,6 +48,26 @@
     };
 };
 
-// トラックボール設定（overlayのデフォルトと同じ設定でテスト）
-// #include <input/processors.dtsi>
-// #include <dt-bindings/zmk/input_transform.h>
+// トラックボールの設定
+#include <input/processors.dtsi>
+#include <dt-bindings/zmk/input_transform.h>
+
+/ {
+    trackball_listener {
+        // Input Processor を使用して、トラックボールの入力を処理できます。
+        // 参考 https://zmk.dev/docs/keymaps/input-processors
+        compatible = "zmk,input-listener";
+        device = <&trackball>;
+        input-processors =
+            <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>, // Y軸反転
+            <&zip_xy_scaler 7 8>; // XY軸の移動量を0.875倍に調整（元の約1.3倍）
+
+        scroller {
+            layers = <1>;
+            input-processors =
+                <&zip_xy_to_scroll_mapper>,
+                <&zip_scroll_scaler 1 40>; // スクロール速度を1/40に調整
+            process-next;
+        };
+    };
+};
