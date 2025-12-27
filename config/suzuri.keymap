@@ -48,27 +48,6 @@
     };
 };
 
-// トラックボール設定（overlayのデフォルトを上書き）
-#include <input/processors.dtsi>
-#include <dt-bindings/zmk/input_transform.h>
-
-/ {
-    trackball_listener {
-        compatible = "zmk,input-listener";
-        device = <&trackball>;
-        // デフォルト: zip_x_scaler 9 8 (1.125倍)
-        // 変更後: zip_x_scaler 4 3 (約1.33倍)
-        input-processors =
-            <&zip_x_scaler 4 3>,
-            <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>;
-
-        scroller {
-            layers = <1>;
-            input-processors =
-                <&zip_xy_to_scroll_mapper>,
-                <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>,
-                <&zip_scroll_scaler 1 40>;
-            process-next;
-        };
-    };
-};
+// トラックボール設定（overlayのデフォルトと同じ設定でテスト）
+// #include <input/processors.dtsi>
+// #include <dt-bindings/zmk/input_transform.h>
