@@ -52,10 +52,12 @@
 #include <input/processors.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
 
-&trackball_listener {
-    // デフォルト: zip_x_scaler 9 8 (1.125倍)
-    // 変更後: zip_x_scaler 4 3 (約1.33倍) - 元の約1.18倍
-    input-processors =
-        <&zip_x_scaler 4 3>,
-        <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>;
+/ {
+    trackball_listener {
+        // デフォルト: zip_x_scaler 9 8 (1.125倍)
+        // 変更後: zip_x_scaler 4 3 (約1.33倍)
+        input-processors =
+            <&zip_x_scaler 4 3>,
+            <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>;
+    };
 };
